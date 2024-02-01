@@ -98,7 +98,7 @@
                         <button id="open-dialog" class="btn btn-info">Enviar Mensaje</button>
                     </div>
                     <div id="dialog-form" title="Enviar Mensaje">
-                        <form  id="contactForm" action="envioEmail.php" method="post">
+                        <form id="contactForm" action="envioEmail.php" method="post" onsubmit="sendForm(event)">
                             <fieldset>
                                 <legend><h4>Envia un mensaje</h4></legend>
                                 <!-- Nombre -->
@@ -106,25 +106,52 @@
                                     <label for="name">Nombre</label>
                                     <input type="text" name="name" id="name" class="form-control">
                                 </div>
-                
+
                                 <!-- Correo Electrónico -->
                                 <div class="form-group">
                                     <label for="email">Correo Electrónico</label>
                                     <input type="email" name="email" id="email" class="form-control">
                                 </div>
-                
+
                                 <!-- Mensaje -->
                                 <div class="form-group">
                                     <label for="message">Mensaje</label>
                                     <textarea name="message" id="message" class="form-control" rows="4"></textarea>
                                 </div>
                                 <button type="submit" id="submitForm">Env</button>
-                                <div id="respsonseMessage"></div>
+                                <div id="responseMessage"></div>
                                 <div id="error-message" class="error"></div>
                             </fieldset>
                         </form>
                     </div>
                 </section>
+
+                <script>
+                    function sendForm(event) {
+                        event.preventDefault(); // Evita que el formulario se envíe de la manera predeterminada
+                
+                        var formData = new FormData(event.target); // Crea un objeto FormData a partir del formulario
+                
+                        fetch('envioEmail.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (!response.ok) { // Verifica si la respuesta del servidor es exitosa
+                                throw new Error('La respuesta del servidor no fue OK');
+                            }
+                            return response.text();
+                        })
+                        .then(data => {
+                            document.getElementById('responseMessage').innerHTML = data; // Muestra la respuesta en el div responseMessage
+                        })
+                        .catch(error => {
+                            console.error('Error capturado:', error);
+                            document.getElementById('responseMessage').innerHTML = 'Hubo un error al procesar tu solicitud. ' + error;
+                        });
+                    }
+                </script>
+                
                 
                 
             </div>
@@ -158,7 +185,7 @@
         <script src="js/sobre-mi.js"></script>
         <script src="js/dialogo.js"></script>
         <script src="js/validateForm.js"></script>
-        <script src="js/emailAjax.js"></script>
+
 
     </body>
     </html>
