@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Maria Sancho</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <!-- <script src="envioEmail.php"></script> -->
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="#">CV</a>
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#sobre-mi">Sobre Mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#proyectos">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Contenedor principal -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Contenido principal -->
+            <div class="col-md-8">
+                <!-- Sección Sobre Mí -->
+                <section id="sobre-mi" class="mb-5">
+                    <div class="col-lg-12">
+                        <h1 class="text-center">Maria Sancho Prades</h1>
+                        <hr>
+                        <div class="text-center">
+                            <img src="img/yo.jpg" alt="imagen de Maria Sancho" class="img-fluid rounded-circle mb-3 w-50">
+                        </div>
+                        <p class="parrafo-activo text-center"><strong>Enfocada en el avance profesional.</strong></p>
+                        <p class="parrafo-activo text-center"><strong>Constancia, ambición y capacidad de adaptación.</strong></p>
+                    </div>
+                </section>
+
+                <!-- Sección Proyectos -->
+                <section id="proyectos" class="mb-5">
+                    <h2 class="text-center">Proyectos</h2>
+                    <p>Al pasar el ratón encima de las cajas se abre el enlace. Desactiva la opción si te molesta.</p>
+                    <!-- Interruptor ON/OFF -->
+                    <div class="custom-control custom-switch mb-3">
+                        <input type="checkbox" class="custom-control-input" id="interruptor">
+                        <label class="custom-control-label" for="interruptor">Activo</label>
+                    </div>
+                    <!-- Lista de enlaces -->
+                    <div class="list-group">
+                        <a href="http://www.universidadesflorida.com" class="list-group-item list-group-item-action">UNIVERSIDADES</a>
+                        <a href="http://www.para-dormir.com" class="list-group-item list-group-item-action">PARA DORMIR</a>
+                        <a href="http://www.noticiasceramica.com" class="list-group-item list-group-item-action">CERAMICA</a>
+                    </div>
+                </section>
+                
+                <!-- Sección Contacto -->
+                <section id="contacto" class="mb-5">
+                    <h3 class="text-center">Contacto</h3>
+                    <div class="contacto-slide">
+                        <p> <strong>Teléfono:</strong> +34 629923149</p>
+                    </div>
+                    <div class="contacto-slide">
+                        <p><strong>Correo electrónico: </strong>m.sancho.p1@gmail.com</p>
+                    </div>
+                    <div class="contacto-slide">
+                        <p><strong>Instagram: </strong>@mariasancho97</p>
+                    </div>
+                    <div class="text-center">
+                        <button id="anterior-contacto" class="btn btn-primary mr-2">Anterior</button>
+                        <button id="siguiente-contacto" class="btn btn-primary ml-2">Siguiente</button>
+                    </div>
+                </section>
+                
+           <!-- Sección Diálogo -->
+                <section id="dialogo" class="mb-5">
+                    <div class="text-center">
+                        <button id="open-dialog" class="btn btn-info">Enviar Mensaje</button>
+                    </div>
+                    <div id="dialog-form" title="Enviar Mensaje">
+                        <form  id="contactForm" action="envioEmail.php" method="post">
+                            <fieldset>
+                                <legend><h4>Envia un mensaje</h4></legend>
+                                <!-- Nombre -->
+                                <div class="form-group">
+                                    <label for="name">Nombre</label>
+                                    <input type="text" name="name" id="name" class="form-control">
+                                </div>
+                
+                                <!-- Correo Electrónico -->
+                                <div class="form-group">
+                                    <label for="email">Correo Electrónico</label>
+                                    <input type="email" name="email" id="email" class="form-control">
+                                </div>
+                
+                                <!-- Mensaje -->
+                                <div class="form-group">
+                                    <label for="message">Mensaje</label>
+                                    <textarea name="message" id="message" class="form-control" rows="4"></textarea>
+                                </div>
+                                <button type="submit" id="submitForm">Env</button>
+                                <div id="respsonseMessage"></div>
+                                <div id="error-message" class="error"></div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </section>
+                
+                
+            </div>
+
+            <!-- Barra lateral - Calendario en el Aside -->
+            <aside class="col-md-4">
+                <div class="calendar">
+                    <h2 id="currentMonth" class="text-center"> MES </h2>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                    <div class="text-center">
+                        <button id="prevMonth" class="btn btn-secondary mr-2">Anterior</button>
+                        <button id="nextMonth" class="btn btn-secondary ml-2">Siguiente</button>
+                    </div>
+                </div>
+            </aside>
+        </div> <!-- Fin del row -->
+    </div> <!-- Fin del container -->
+
+    <!-- Footer -->
+    <footer class="text-center mt-4 mb-4">
+        <p>© 2024 Mi Portafolio de Diseño Web</p>
+    </footer>
+    
+        <!-- Scripts -->
+        <script src="js/calendario.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="js/contacto.js"></script>
+        <script src="js/proyectos.js"></script>
+        <script src="js/smooth-scroll.js"></script>
+        <script src="js/sobre-mi.js"></script>
+        <script src="js/dialogo.js"></script>
+        <script src="js/validateForm.js"></script>
+        <script src="js/emailAjax.js"></script>
+
+    </body>
+    </html>
+    
